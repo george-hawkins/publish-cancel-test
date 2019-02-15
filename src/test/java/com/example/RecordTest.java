@@ -28,7 +28,7 @@ class RecordTest {
 
     @Test
     void testConsumeAllAvailableWithoutExpect() {
-        // If you knock out the expect bit then everything finishes - this must be a bug?
+        // If you knock out the expect bit then everything finishes.
         testWithoutExpect(CAPACITY);
     }
 
@@ -44,7 +44,7 @@ class RecordTest {
                 .thenConsumeWhile(i -> i < (end - 1))
                 .expectRecordedMatches(actual -> {
                     boolean result = expected.equals(actual);
-                    System.out.println("result = " + result);
+                    System.err.println("result = " + result);
                     return result;
                 })
                 .thenCancel()
