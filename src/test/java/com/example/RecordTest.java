@@ -2,10 +2,8 @@ package com.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.ReplayProcessor;
 import reactor.test.StepVerifier;
-import reactor.util.concurrent.Queues;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -54,8 +52,6 @@ class RecordTest {
     }
 
     private void testWithoutExpect(int end) {
-        List<Integer> expected = IntStream.range(0, end).boxed().collect(Collectors.toList());
-
         ReplayProcessor<Integer> flux = ReplayProcessor.create(CAPACITY);
 
         for (int i = 0; i < CAPACITY; i++) flux.onNext(i);
